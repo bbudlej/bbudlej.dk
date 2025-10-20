@@ -1,0 +1,31 @@
+<!doctype html><html lang="da"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>BB Udlejning Bornholm</title>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>:root{--kongeblaa:#0D2C87}</style></head>
+<body class="bg-neutral-50 text-neutral-900">
+<header class="sticky top-0 z-30 backdrop-blur bg-white/80 border-b border-neutral-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between">
+    <div class="flex items-center gap-3"><img src="bb-logo-256.png" class="h-8 w-8 rounded-lg" alt="BB"/><div class="leading-tight"><div class="font-semibold">BB Udlejning</div><div class="text-xs text-neutral-500">Bornholm • Containere • Trailere • Maskiner</div></div></div>
+    <a href="mailto:bs@elcenter.dk" class="px-3 py-1.5 rounded-lg text-white" style="background:var(--kongeblaa)">Skriv mail</a>
+  </div>
+</header>
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <h2 class="text-xl font-semibold mb-4">Produkter</h2>
+  <div class="flex gap-3 mb-4"><input id="q" class="px-3 py-2 rounded-lg border border-neutral-300 flex-1" placeholder="Søg"/><label class="inline-flex items-center gap-2 text-sm"><input type="checkbox" id="inc"> Vis inkl. moms</label></div>
+  <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+</section>
+<script>
+function dkk(n){return new Intl.NumberFormat('da-DK',{style:'currency',currency:'DKK',maximumFractionDigits:0}).format(n);}
+const g=document.getElementById('grid'),q=document.getElementById('q'),inc=document.getElementById('inc');let DATA=[];
+function render(){const s=(q.value||'').toLowerCase();g.innerHTML='';(DATA||[]).filter(p=>p.name.toLowerCase().includes(s)).forEach(p=>{g.innerHTML+=`
+<article class="rounded-xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition">
+  <div class="aspect-[16/9] rounded-t-xl overflow-hidden bg-neutral-100"><img src="${p.image||'bb-logo-256.png'}" class="w-full h-full object-contain p-4" alt="${p.name}"></div>
+  <div class="p-3"><div class="text-[10px] uppercase tracking-wide text-neutral-500">${p.category}</div>
+  <div class="mt-0.5 font-medium">${p.name}</div>
+  <div class="mt-2 flex items-baseline gap-2"><div class="text-lg font-semibold">${inc.checked?dkk(p.price_inc)+' inkl. moms':dkk(p.price_ex)+' ekskl. moms'}</div><div class="text-xs text-neutral-500">/ dag</div></div></div>
+</article>`;});}
+fetch('content/products.json').then(r=>r.json()).then(d=>{DATA=d.products||[];render();});q.addEventListener('input',render);inc.addEventListener('change',render);
+</script>
+</body></html>

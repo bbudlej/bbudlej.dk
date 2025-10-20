@@ -1,0 +1,53 @@
+{
+  "products": [
+    {
+      "name": "10 fod container",
+      "category": "Containere",
+      "price_ex": 24,
+      "price_inc": 30,
+      "image": "icons/container.png"
+    },
+    {
+      "name": "10 fod container på hjul",
+      "category": "Containere",
+      "price_ex": 100,
+      "price_inc": 125,
+      "image": "icons/container-hjul.png"
+    },
+    {
+      "name": "20 fod container 1",
+      "category": "Containere",
+      "price_ex": 52,
+      "price_inc": 65,
+      "image": "icons/container.png"
+    },
+    {
+      "name": "40 fod container 1",
+      "category": "Containere",
+      "price_ex": 100,
+      "price_inc": 125,
+      "image": "icons/container.png"
+    },
+    {
+      "name": "Badevogn",
+      "category": "Skurvogne / Pladshytter",
+      "price_ex": 100,
+      "price_inc": 125,
+      "image": "icons/badevogn.png"
+    },
+    {
+      "name": "Maskintrailer 3500kg",
+      "category": "Trailere / Maskintrailere",
+      "price_ex": 400,
+      "price_inc": 500,
+      "image": "icons/maskintrailer.png"
+    },
+    {
+      "name": "Håndholdt nedbrydningshammer",
+      "category": "Værktøj & tilbehør",
+      "price_ex": 152,
+      "price_inc": 190,
+      "image": "icons/hammer.png"
+    }
+  ]
+}

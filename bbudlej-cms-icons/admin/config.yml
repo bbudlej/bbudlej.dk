@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+collections:
+  - name: "products"
+    label: "Produkter"
+    file: "content/products.json"
+    editor: { preview: false }
+    fields:
+      - label: "Produkter"
+        name: "products"
+        widget: "list"
+        collapsed: true
+        summary: "{{fields.name}} ({{fields.category}})"
+        fields:
+          - { label: "Navn", name: "name", widget: "string" }
+          - { label: "Kategori", name: "category", widget: "select", options: ["Containere","Skurvogne / Pladshytter","Trailere / Maskintrailere","Maskiner / Entreprenør","Værktøj & tilbehør"] }
+          - { label: "Pris ekskl. moms", name: "price_ex", widget: "number", value_type: "int", min: 0 }
+          - { label: "Pris inkl. moms", name: "price_inc", widget: "number", value_type: "int", min: 0 }
+          - { label: "Billede", name: "image", widget: "image" }
